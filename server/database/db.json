@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "username": "user1",
+      "password": "$2b$04$Dso0hnC7TeoLvlURqwy5eOzq4EJ57NE8pgFB77AtK483ukpZwOHrS",
+      "id": 1
+    },
+    {
+      "username": "user2",
+      "password": "$2b$04$EJBjqsNW.Vw.QxfmGwqK5uLfOIR7vWEdeSDRy0FNhprT6g7I.7Oei",
+      "id": 2
+    }
+  ],
+  "tokens": [
+    {
+      "userId": 1,
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcklkIjoxLCJpYXQiOjE2NDkzMzA2NTAsImV4cCI6MTY0OTQxNzA1MH0.5L7nWSYQGOqE59Gdkff0iQ3jyd0KNxkiY_NHavgCn7g",
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcklkIjoyLCJpYXQiOjE2NDkzMzMzNzIsImV4cCI6MTY0OTQxOTc3Mn0.CRFRItfweXwakdV3OCVWwPDsN-r-cfa1oQk-tViLc-I",
+      "id": 2
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "contact_list": [
+        {
+          "id": 1,
+          "username": "user2",
+          "email": "user2@mail.com",
+          "phone": "+123456789"
+        },
+        {
+          "id": 2,
+          "username": "user3",
+          "email": "user3@mail.com",
+          "phone": "+123456789"
+        }
+      ]
+    }
+  ]
+}
