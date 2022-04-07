@@ -1,33 +1,47 @@
 require('dotenv').config()
 
-const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser")
+
+//====== express server
+
 const express = require('express');
 const authRouter = require('./routes/auth-routes')
-const jsonServer = require('json-server')
-const routerDb = jsonServer.router('./database/db.json')
 const apiErrorMiddleware = require('./middlewares/error-middleware')
+const headersMiddleware = require('./middlewares/headers-middleware')
+const authMiddleware = require('./middlewares/auth-middleware')
+const redirectMiddleware = require('./middlewares/redirect-middleware')
 
-const PORT = process.env.PORT;
-const app = express();
 
+const PORT = process.env.PORT
+const app = express()
 
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    next();
-});
+app.use(headersMiddleware)
 app.use(express.json())
 app.use(cookieParser())
-
 app.use('/auth', authRouter)
-app.use('/db', routerDb);
-
+app.use(authMiddleware) //check jwt
+app.use('/db', redirectMiddleware) //redirect query to json-server
 app.use(apiErrorMiddleware)
 
 app.listen(PORT, function () {
-    console.log(`Backend server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`)
 });
 
 
+//====== json server
 
+const jsonServer = require('json-server')
+const routerDb = jsonServer.router('./database/db.json')
+const serverDb = jsonServer.create()
+const middlewaresDb = jsonServer.defaults()
+
+const PORT_DB = process.env.PORT_DB
+
+serverDb.use(middlewaresDb)
+serverDb.use(jsonServer.bodyParser)
+serverDb.use('/db', routerDb)
+
+serverDb.listen(PORT_DB, function () {
+    console.log(`Database server is running on port ${PORT_DB}`)
+})
 
