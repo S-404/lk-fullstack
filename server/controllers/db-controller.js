@@ -6,7 +6,7 @@ class DbController {
 
     async insert(collection, data) {
         const url = `${db}/${collection}`
-        const response = await axios.post(url, data,{})
+        const response = await axios.post(url, data, {})
         return response.data
     }
 
@@ -18,7 +18,7 @@ class DbController {
 
     async update(collection, data) {
         const url = `${db}/${collection}/${data.id}`
-        const response = await axios.put(url, data,{})
+        const response = await axios.put(url, data, {})
         return response.data
     }
 

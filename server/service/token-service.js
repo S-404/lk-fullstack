@@ -11,8 +11,8 @@ class TokenService {
     async saveToken(userId, refreshToken) {
         const tokenData = await dbController.select('tokens', 'userId', userId)
         if (tokenData.length) {
-            tokenData.refreshToken = refreshToken
-            return await dbController.update('tokens', tokenData)
+            tokenData[0].refreshToken = refreshToken
+            return await dbController.update('tokens', tokenData[0])
         }
         return await dbController.insert('tokens', {userId, refreshToken})
     }
