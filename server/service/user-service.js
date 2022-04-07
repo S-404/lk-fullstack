@@ -41,6 +41,21 @@ class UserService {
     async logout(refreshToken){
         return await tokenService.removeToken(refreshToken)
     }
+
+    async refresh(refreshToken) {
+        if (!refreshToken) {
+            throw ApiError.UnauthorizedError()
+        }
+        const userData = tokenService.validateRefreshToken(refreshToken)
+        const tokenData = await dbController.select('tokens', 'refreshToken', refreshToken)
+        if (!userData || !tokenData.length) {
+            throw ApiError.UnauthorizedError()
+        }
+        const user = await dbController.select('users', 'id', userData.id)
+        return  await this.handleUserData(user[0])
+
+    }
+
 }
 
 module.exports = new UserService();

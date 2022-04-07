@@ -24,6 +24,23 @@ class TokenService {
         }
         return []
     }
+
+    validateAccessToken(token) {
+        try {
+            return jwt.verify(token, process.env.JWT_ACCESS_SECRET,null,null)
+        } catch (e) {
+            return null
+        }
+    }
+
+    validateRefreshToken(token) {
+        try {
+            return jwt.verify(token, process.env.JWT_REFRESH_SECRET,null,null)
+        } catch (e) {
+            return null
+        }
+    }
+
 }
 
 module.exports = new TokenService();
