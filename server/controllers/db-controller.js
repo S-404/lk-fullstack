@@ -22,8 +22,8 @@ class DbController {
         return response.data
     }
 
-    async delete(collection, data) {
-        const url = `${db}/${collection}/${data.id}`
+    async delete(collection, id) {
+        const url = `${db}/${collection}/${id}`
         const response = await axios.delete(url, {})
         return response.data
     }

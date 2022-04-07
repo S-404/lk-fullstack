@@ -17,6 +17,13 @@ class TokenService {
         return await dbController.insert('tokens', {userId, refreshToken})
     }
 
+    async removeToken(refreshToken) {
+        const tokenData = await dbController.select('tokens', 'refreshToken', refreshToken)
+        if (tokenData.length) {
+            return await dbController.delete('tokens', tokenData[0].id)
+        }
+        return []
+    }
 }
 
 module.exports = new TokenService();

@@ -38,12 +38,8 @@ class UserService {
         return await this.handleUserData(user[0])
     }
 
-    async handleUserData(userData){
-        const userDto = new UserDto(userData)
-        const tokens = tokenService.generateTokens({...userDto})
-        await tokenService.saveToken(userDto.userId, tokens.refreshToken)
-
-        return {user: userDto, ...tokens}
+    async logout(refreshToken){
+        return await tokenService.removeToken(refreshToken)
     }
 }
 
