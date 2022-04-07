@@ -6,7 +6,7 @@ const ApiError = require('../exceptions/api-error')
 
 class UserService {
 
-    async handleUserData(userData){
+    async handleUserData(userData) {
         const userDto = new UserDto(userData)
         const tokens = tokenService.generateTokens({...userDto})
         await tokenService.saveToken(userDto.userId, tokens.refreshToken)
@@ -38,7 +38,7 @@ class UserService {
         return await this.handleUserData(user[0])
     }
 
-    async logout(refreshToken){
+    async logout(refreshToken) {
         return await tokenService.removeToken(refreshToken)
     }
 
@@ -58,4 +58,4 @@ class UserService {
 
 }
 
-module.exports = new UserService();
+module.exports = new UserService()

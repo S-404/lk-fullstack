@@ -1,9 +1,21 @@
 const axios = require("axios")
-const PORT = process.env.PORT;
-const db = `http://localhost:${PORT}/db`
+const PORT_DB = process.env.PORT_DB;
+const db = `http://localhost:${PORT_DB}/db`
 
 class DbController {
+    // /db queries
+    async redirectQuery(url, method){
+        const responseData = await axios({
+                method,
+                url: `http://localhost:${PORT_DB}${url}`,
+                data: {}
+            })
+        return responseData.data
+    }
 
+
+
+    // /auth queries
     async insert(collection, data) {
         const url = `${db}/${collection}`
         const response = await axios.post(url, data, {})

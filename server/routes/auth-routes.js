@@ -1,6 +1,6 @@
-const Router = require('express');
-const authRouter = new Router();
-const authController = require("../controllers/auth-controller");
+const Router = require('express')
+const authRouter = new Router()
+const authController = require("../controllers/auth-controller")
 const {body} = require('express-validator')
 
 authRouter.post(
