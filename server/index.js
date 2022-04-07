@@ -1,4 +1,5 @@
 require('dotenv').config()
+
 const cookieParser = require("cookie-parser")
 
 //====== express server
@@ -43,3 +44,4 @@ serverDb.use('/db', routerDb)
 serverDb.listen(PORT_DB, function () {
     console.log(`Database server is running on port ${PORT_DB}`)
 })
+
