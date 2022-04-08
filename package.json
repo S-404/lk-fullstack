@@ -1,0 +1,25 @@
+{
+  "name": "lk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/server/index.js",
+  "scripts": {
+    "start-server": "cd server && npm run start",
+    "start-client": "cd client && npm run start",
+    "dev": "concurrently \"npm run start-server\" \"npm run start-client\"",
+    "start": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S-404/lk-fullstack.git"
+  },
+  "author": "S-404",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/S-404/lk-fullstack/issues"
+  },
+  "homepage": "https://github.com/S-404/lk-fullstack#readme",
+  "dependencies": {
+    "concurrently": "^7.1.0"
+  }
+}
