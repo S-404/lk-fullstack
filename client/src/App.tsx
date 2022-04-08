@@ -1,11 +1,15 @@
-import React, {FC} from 'react';
+import React, {FC} from "react"
+import {BrowserRouter as Router,} from "react-router-dom"
+import AppRouter from "./router/appRouter"
 
 
 const App: FC = () => {
+
+
     return (
-        <div className="App">
-            work
-        </div>
+        <Router>
+            <AppRouter/>
+        </Router>
     );
 }
 
