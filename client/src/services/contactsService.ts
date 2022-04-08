@@ -1,6 +1,6 @@
 import {_api} from '../api'
 import {AxiosResponse} from 'axios'
-import {ContactsResponse} from "./types/ContactsResponse";
+import {ContactsResponse} from "../types/services/contactsResponse";
 
 export default class ContactsService{
 
