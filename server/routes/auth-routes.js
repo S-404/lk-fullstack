@@ -11,6 +11,6 @@ authRouter.post(
 
 authRouter.post('/login', authController.login)
 authRouter.post('/logout', authController.logout)
-authRouter.post('/refresh', authController.refresh)
+authRouter.get('/refresh', authController.refresh)
 
 module.exports = authRouter;
