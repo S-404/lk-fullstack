@@ -1,14 +1,14 @@
 const axios = require("axios")
 
-const PORT_DB = process.env.PORT_DB;
-const db = `http://localhost:${PORT_DB}/db`
+const DATABASE_URL = process.env.DATABASE_URL;
+const db = `${DATABASE_URL}/db`
 
 class DbController {
     // /db queries
     async redirectQuery(url, method){
         const responseData = await axios({
                 method,
-                url: `http://localhost:${PORT_DB}${url}`,
+                url: `${DATABASE_URL}${url}`,
                 data: {}
             })
         return responseData.data
