@@ -2,6 +2,7 @@ import {IUser} from "../services/AuthResponse"
 
 export interface AuthState {
     isAuth: boolean;
+    refreshLoading: boolean;
     user: IUser;
     loading: boolean;
     error: null | string;
@@ -9,6 +10,7 @@ export interface AuthState {
 
 export enum AuthActionTypes {
     SET_AUTH = "SET_AUTH",
+    SET_REFRESH_LOADING = "SET_REFRESH_LOADING",
     FETCH_USER = "FETCH_USER",
     FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS",
     FETCH_USER_ERROR = "FETCH_USER_ERROR",
@@ -16,6 +18,11 @@ export enum AuthActionTypes {
 
 interface SetAuthAction {
     type: AuthActionTypes.SET_AUTH;
+    value: boolean;
+}
+
+interface SetRefreshAction {
+    type: AuthActionTypes.SET_REFRESH_LOADING;
     value: boolean;
 }
 
@@ -37,6 +44,7 @@ interface FetchUserErrorAction {
 
 export type  AuthAction =
     SetAuthAction
+    | SetRefreshAction
     | FetchUserAction
     | FetchUserSuccessAction
     | FetchUserErrorAction
