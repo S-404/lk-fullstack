@@ -1,14 +1,12 @@
-import React from "react"
+import React, {FC} from "react"
 import {Route, Routes} from "react-router-dom"
 import {privateRoutes, publicRoutes} from "./routes"
 import LoginPage from "../pages/loginPage/LoginPage"
 import {useTypedSelector} from "../hooks/useTypedSelector"
 import UserPage from "../pages/UserPage"
 
-const AppRouter = () => {
-
+const AppRouter:FC = () => {
     const isAuth = useTypedSelector(state => state.auth.isAuth)
-    console.log('tick')
     return (
         isAuth ?
             <Routes>
@@ -33,8 +31,6 @@ const AppRouter = () => {
                 )}
                 <Route path="*" element={<LoginPage/>}/>
             </Routes>
-
-
     )
 }
 
