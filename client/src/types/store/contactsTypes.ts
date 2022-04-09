@@ -1,7 +1,7 @@
-import {ContactsResponse} from "../services/contactsResponse"
+import {IContact} from "../services/contactsResponse"
 
 export interface ContactsState {
-    contacts: ContactsResponse[];
+    contacts: IContact[];
     loading: boolean;
     error: null | string;
 }
@@ -19,12 +19,12 @@ interface FetchContactsAction {
 
 interface FetchContactsSuccessAction {
     type: ContactsActionTypes.FETCH_CONTACTS_SUCCESS;
-    res: ContactsResponse[];
+    value: IContact[];
 }
 
 interface FetchContactsErrorAction {
     type: ContactsActionTypes.FETCH_CONTACTS_ERROR;
-    res: string;
+    value: string;
 }
 
 export type  ContactsAction =

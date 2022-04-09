@@ -11,9 +11,9 @@ export const contactsReducer = (state = contactsState, action: ContactsAction): 
         case ContactsActionTypes.FETCH_CONTACTS:
             return {loading: true, error: null, contacts: []}
         case ContactsActionTypes.FETCH_CONTACTS_SUCCESS:
-            return {loading: false, error: null, contacts: action.res}
+            return {loading: false, error: null, contacts: action.value}
         case ContactsActionTypes.FETCH_CONTACTS_ERROR:
-            return {loading: false, error: action.res, contacts: []}
+            return {loading: false, error: action.value, contacts: []}
         default:
             return state
     }

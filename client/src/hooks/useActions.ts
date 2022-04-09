@@ -4,6 +4,7 @@ import {login} from "../store/action-creators/login"
 import {logout} from "../store/action-creators/logout"
 import {registration} from "../store/action-creators/registration"
 import {checkAuth} from "../store/action-creators/checkAuth"
+import {fetchContacts} from "../store/action-creators/fetchContacts"
 
 export const useActions = () => {
     const dispatch = useDispatch()
@@ -11,7 +12,8 @@ export const useActions = () => {
             login,
             logout,
             registration,
-            checkAuth
+            checkAuth,
+            fetchContacts
         },
         dispatch)
 }
