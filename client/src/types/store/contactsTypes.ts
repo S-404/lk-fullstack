@@ -11,6 +11,9 @@ export enum ContactsActionTypes {
     FETCH_CONTACTS = "FETCH_CONTACTS",
     FETCH_CONTACTS_SUCCESS = "FETCH_CONTACTS_SUCCESS",
     FETCH_CONTACTS_ERROR = "FETCH_CONTACTS_ERROR",
+    ADD_CONTACT = "ADD_CONTACT",
+    REMOVE_CONTACT = "REMOVE_CONTACT",
+    UPDATE_CONTACT = "UPDATE_CONTACT"
 }
 
 interface FetchContactsAction {
@@ -19,15 +22,34 @@ interface FetchContactsAction {
 
 interface FetchContactsSuccessAction {
     type: ContactsActionTypes.FETCH_CONTACTS_SUCCESS;
-    res: ContactsResponse[];
+    value: ContactsResponse[];
+}
+
+interface AddContactsAction {
+    type: ContactsActionTypes.ADD_CONTACT;
+    value: ContactsResponse;
+}
+
+interface RemoveContactsAction {
+    type: ContactsActionTypes.REMOVE_CONTACT;
+    value: number;
+}
+
+interface UpdateContactsAction {
+    type: ContactsActionTypes.UPDATE_CONTACT;
+    value: ContactsResponse;
 }
 
 interface FetchContactsErrorAction {
     type: ContactsActionTypes.FETCH_CONTACTS_ERROR;
-    res: string;
+    value: string;
 }
+
 
 export type  ContactsAction =
     FetchContactsAction |
     FetchContactsSuccessAction |
-    FetchContactsErrorAction
+    FetchContactsErrorAction |
+    AddContactsAction |
+    RemoveContactsAction |
+    UpdateContactsAction

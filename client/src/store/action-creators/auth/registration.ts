@@ -1,6 +1,6 @@
 import {Dispatch} from "redux"
-import {AuthAction, AuthActionTypes} from "../../types/store/authTypes"
-import AuthService from "../../services/authService"
+import {AuthAction, AuthActionTypes} from "../../../types/store/authTypes"
+import AuthService from "../../../services/authService"
 import axios from "axios"
 
 export const registration = (username: string, password: string) => {

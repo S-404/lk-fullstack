@@ -5,11 +5,11 @@ const db = `${DATABASE_URL}/db`
 
 class DbController {
     // /db queries
-    async redirectQuery(url, method){
+    async redirectQuery(url, method, data={}){
         const responseData = await axios({
                 method,
                 url: `${DATABASE_URL}${url}`,
-                data: {}
+                data,
             })
         return responseData.data
     }

@@ -1,9 +1,13 @@
 import {useDispatch} from "react-redux"
 import {bindActionCreators} from "redux"
-import {login} from "../store/action-creators/login"
-import {logout} from "../store/action-creators/logout"
-import {registration} from "../store/action-creators/registration"
-import {checkAuth} from "../store/action-creators/checkAuth"
+import {login} from "../store/action-creators/auth/login"
+import {logout} from "../store/action-creators/auth/logout"
+import {registration} from "../store/action-creators/auth/registration"
+import {checkAuth} from "../store/action-creators/auth/checkAuth"
+import {fetchContacts} from "../store/action-creators/contacts/fetchContacts"
+import {addContact} from "../store/action-creators/contacts/addContact"
+import {editContact} from "../store/action-creators/contacts/editContact"
+import {removeContact} from "../store/action-creators/contacts/removeContact"
 
 export const useActions = () => {
     const dispatch = useDispatch()
@@ -11,7 +15,11 @@ export const useActions = () => {
             login,
             logout,
             registration,
-            checkAuth
+            checkAuth,
+            fetchContacts,
+            addContact,
+            editContact,
+            removeContact
         },
         dispatch)
 }
