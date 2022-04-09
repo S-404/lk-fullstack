@@ -1,9 +1,9 @@
-import {IContact} from "../services/contactsResponse"
+import {ContactsResponse} from "../services/contactsResponse"
 
 export interface ContactTypes {
-    contact: IContact
+    contact: ContactsResponse
 }
 
 export interface ContactsTypes {
-    contacts: IContact[]
+    contacts: ContactsResponse[]
 }

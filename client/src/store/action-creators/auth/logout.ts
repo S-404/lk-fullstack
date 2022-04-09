@@ -1,7 +1,7 @@
 import {Dispatch} from "redux"
-import {AuthAction, AuthActionTypes} from "../../types/store/authTypes"
-import AuthService from "../../services/authService"
-import {IUser} from "../../types/services/AuthResponse"
+import {AuthAction, AuthActionTypes} from "../../../types/store/authTypes"
+import AuthService from "../../../services/authService"
+import {IUser} from "../../../types/services/AuthResponse"
 
 export const logout = () => {
     return async (dispatch: Dispatch<AuthAction>) => {

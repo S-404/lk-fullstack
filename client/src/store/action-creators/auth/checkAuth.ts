@@ -1,7 +1,7 @@
 import {Dispatch} from "redux"
-import {AuthAction, AuthActionTypes} from "../../types/store/authTypes"
+import {AuthAction, AuthActionTypes} from "../../../types/store/authTypes"
 import axios from "axios"
-import {API_URL} from "../../api"
+import {API_URL} from "../../../api"
 
 export const checkAuth = () => {
     return async (dispatch: Dispatch<AuthAction>) => {
