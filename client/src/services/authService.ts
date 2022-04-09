@@ -1,6 +1,6 @@
 import {_api} from '../api'
 import {AxiosResponse} from 'axios'
-import {AuthResponse} from "../types/services/authResponse";
+import {AuthResponse} from "../types/services/AuthResponse";
 
 export default class AuthService{
 

@@ -1,7 +1,6 @@
-import axios from 'axios'
-import {AxiosRequestConfig} from 'axios'
+import axios, {AxiosRequestConfig} from "axios"
 
-export const API_URL = process.env.REACT_APP_BACKEND_ADDRESS
+export const API_URL = process.env.REACT_APP_SERVER_URL
 
 export const _api = axios.create({
     withCredentials: true,
