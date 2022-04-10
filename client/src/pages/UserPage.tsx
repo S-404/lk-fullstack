@@ -1,11 +1,10 @@
 import React from "react"
-import ContactList from "../components/contactList/ContactList"
 
 const UserPage = () => {
 
     return (
         <div>
-            <ContactList/>
+            <h3>Personal Page</h3>
         </div>
     )
 }

@@ -2,13 +2,14 @@ import React, {FC} from "react"
 import {ContactTypes} from "../../types/components/contactsTypes"
 
 
-const Contact: FC<ContactTypes> = ({contact}) => {
+const Contact: FC<ContactTypes> = ({contact,index}) => {
     return (
-        <div>
-            <span>{contact.username}</span>
-            <span>{contact.phone}</span>
-            <span>{contact.email}</span>
-        </div>
+            <tr>
+                <th scope="row">{index+1}</th>
+                <td>{contact.username}</td>
+                <td>{contact.phone}</td>
+                <td>{contact.email}</td>
+            </tr>
     )
 }
 
