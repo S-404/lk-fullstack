@@ -5,7 +5,7 @@ import MyModal from "../components/UI/MyModal"
 import ContactForm from "../components/contactForm/ContactForm"
 import {useTypedSelector} from "../hooks/useTypedSelector"
 import {useActions} from "../hooks/useActions"
-import FilterInput from "../components/FilterInput"
+import FilterInput from "../components/contactList/FilterInput"
 
 const ContactsPage: FC = () => {
 
@@ -19,7 +19,7 @@ const ContactsPage: FC = () => {
     }, [])
 
     return (
-        <div className="d-flex justify-content-center h-100 overflow-auto">
+        <div className="d-flex justify-content-center h-75 overflow-auto">
             <div>
                 {error ? <Alert color="danger">{error}</Alert> : null}
 

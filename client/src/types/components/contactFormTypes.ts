@@ -16,7 +16,6 @@ export interface NewContactFormInputsPropsTypes {
     setEmail: Dispatch<SetStateAction<string>>;
     setUsername: Dispatch<SetStateAction<string>>;
     setPhone: Dispatch<SetStateAction<string>>;
-    setInputsIsValid: Dispatch<SetStateAction<boolean>>;
 }
 
 

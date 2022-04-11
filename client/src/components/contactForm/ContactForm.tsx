@@ -3,14 +3,14 @@ import {Button} from "reactstrap"
 import ContactFormInputs from "./ContactFormInputs"
 import {useActions} from "../../hooks/useActions"
 import {useTypedSelector} from "../../hooks/useTypedSelector"
-import {ContactFormTypes} from "../../types/components/ContactFormTypes"
+import {ContactFormTypes} from "../../types/components/contactFormTypes"
+import {emailCheck, phoneCheck, usernameCheck} from "../../helpers/contactsChecks"
 
 const ContactForm: FC<ContactFormTypes> = ({mode}) => {
 
     const [email, setEmail] = useState<string>("")
     const [username, setUsername] = useState<string>("")
     const [phone, setPhone] = useState<string>("")
-    const [inputsIsValid, setInputsIsValid] = useState<boolean>(false)
 
     const {addContact, editContact, setModalNewContact, setModalEditContact} = useActions()
     const {user} = useTypedSelector(state => state.auth)
@@ -36,6 +36,10 @@ const ContactForm: FC<ContactFormTypes> = ({mode}) => {
     }
 
     const applyButtonHandler = () => {
+        const {isValid: usernameIsValid} = usernameCheck(username)
+        const {isValid: emailIsValid} = emailCheck(email)
+        const {isValid: phoneIsValid} = phoneCheck(phone)
+        const inputsIsValid = usernameIsValid && emailIsValid && phoneIsValid
         if (inputsIsValid) {
             switch (mode) {
                 case "edit":
@@ -48,6 +52,8 @@ const ContactForm: FC<ContactFormTypes> = ({mode}) => {
                     break
             }
             cancelButtonHandler()
+        } else {
+
         }
     }
 
@@ -65,18 +71,17 @@ const ContactForm: FC<ContactFormTypes> = ({mode}) => {
                 setPhone={setPhone}
                 setUsername={setUsername}
                 setEmail={setEmail}
-                setInputsIsValid={setInputsIsValid}
             />
 
-            <div className="">
+            <div className="d-flex flex-row justify-content-between">
+                <Button onClick={cancelButtonHandler}>Cancel</Button>
                 <Button
-                    disabled={!inputsIsValid}
                     color="success"
                     onClick={applyButtonHandler}
                 >
                     Apply
                 </Button>
-                <Button onClick={cancelButtonHandler}>Cancel</Button>
+
             </div>
 
         </div>
