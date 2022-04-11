@@ -10,6 +10,10 @@ export interface SelectedContactState {
     contact: ContactsResponse
 }
 
+export interface FilterContactsState {
+    filter: string
+}
+
 
 export enum ContactsActionTypes {
     FETCH_CONTACTS = "FETCH_CONTACTS",
@@ -18,7 +22,8 @@ export enum ContactsActionTypes {
     ADD_CONTACT = "ADD_CONTACT",
     REMOVE_CONTACT = "REMOVE_CONTACT",
     UPDATE_CONTACT = "UPDATE_CONTACT",
-    SET_SELECTED_CONTACT = "SET_SELECTED_CONTACT"
+    SET_SELECTED_CONTACT = "SET_SELECTED_CONTACT",
+    SET_FILTER_CONTACTS = "SET_FILTER_CONTACTS"
 }
 
 interface FetchContactsAction {
@@ -55,6 +60,10 @@ interface SetSelectedContactAction {
     value: ContactsResponse;
 }
 
+interface SetFilterContactsAction {
+    type: ContactsActionTypes.SET_FILTER_CONTACTS;
+    value: string;
+}
 
 export type  ContactsAction =
     FetchContactsAction |
@@ -63,4 +72,5 @@ export type  ContactsAction =
     AddContactsAction |
     RemoveContactsAction |
     UpdateContactsAction |
-    SetSelectedContactAction
+    SetSelectedContactAction|
+    SetFilterContactsAction
