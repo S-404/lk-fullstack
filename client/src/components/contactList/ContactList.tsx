@@ -1,41 +1,31 @@
-import React, {FC, useEffect, useState} from "react"
-import Contacts from "./Contacts"
+import React, {FC, useState} from "react"
+import Contact from "./Contact"
+import {Table} from "reactstrap"
 import {useTypedSelector} from "../../hooks/useTypedSelector"
-import {useActions} from "../../hooks/useActions"
-import {Button} from "reactstrap"
-import MyModal from "../UI/MyModal"
 
 const ContactList: FC = () => {
 
-    const {user} = useTypedSelector(state => state.auth)
-    const {contacts, loading, error} = useTypedSelector(state => state.contacts)
-    const {fetchContacts} = useActions()
-    const [newContactFormVisible, setNewContactFormVisible] = useState<boolean>(false)
-
-
-    useEffect(() => {
-        fetchContacts(user.id)
-    }, [])
-
+    const [heads] = useState<string[]>(["#", "Name", "Phone", "Email", "", ""])
+    const {contacts} = useTypedSelector(state => state.contacts)
 
     return (
-        <div>
-            <h3>Contact List:</h3>
-            <Contacts contacts={contacts}/>
-            <Button
-                color="success"
-                onClick={() => setNewContactFormVisible(true)}
-            >Add new contact</Button>
-            <MyModal
-                visible={newContactFormVisible}
-                setVisible={setNewContactFormVisible}
-                action={() => {
-                }}
-            >
-                <></>
-            </MyModal>
-
+        <div className="position-relative h-75 overflow-auto">
+            <Table hover>
+                <thead className="position-sticky top-0 bg-body">
+                <tr>
+                    {heads.map((head, index) => (
+                        <th key={index}>{head}</th>
+                    ))}
+                </tr>
+                </thead>
+                <tbody>
+                {contacts.map((contact, index) => (
+                    <Contact key={contact.id} contact={contact} index={index}/>
+                ))}
+                </tbody>
+            </Table>
         </div>
+
     )
 }
 
