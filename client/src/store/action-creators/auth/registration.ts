@@ -10,6 +10,7 @@ export const registration = (username: string, password: string) => {
             const response = await AuthService.registration(username, password)
             localStorage.setItem("token", response.data.accessToken)
             dispatch({type: AuthActionTypes.FETCH_USER_SUCCESS, value: response.data.user})
+            dispatch({type: AuthActionTypes.SET_AUTH, value: true})
         } catch (e) {
             let errMsg
             if (axios.isAxiosError(e)) {

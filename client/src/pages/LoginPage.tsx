@@ -1,13 +1,16 @@
 import React, {FC, useState} from "react"
 import {useTypedSelector} from "../hooks/useTypedSelector"
 import {useActions} from "../hooks/useActions"
+import {Alert, Button, FormGroup, Input, Label} from "reactstrap"
+import {Link} from "react-router-dom"
+
 
 const LoginPage: FC = () => {
 
     const [username, setUsername] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    const {user, loading, error} = useTypedSelector(state => state.auth)
-    const {login, registration} = useActions()
+    const {loading, error} = useTypedSelector(state => state.auth)
+    const {login} = useActions()
 
     const handlerUsernameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(e.target.value)
@@ -21,30 +24,40 @@ const LoginPage: FC = () => {
         if (username && password) login(username, password)
     }
 
-    const handlerRegistrationButton = () => {
-        if (username && password) registration(username, password)
-    }
-
-
     return (
-        <div>
-            <input
-                placeholder={"username"}
-                value={username}
-                onChange={handlerUsernameInput}
-            />
-            <input
-                placeholder={"password"}
-                type={"password"}
-                value={password}
-                onChange={handlerPasswordInput}
-            />
-            <button onClick={handlerLoginButton}>Login</button>
-            <button onClick={handlerRegistrationButton}>Registration</button>
+        <div className="w-25 h-50 align-items-center m-auto mt-5">
+
+            <h2>Sign in to LK</h2>
+            {error ? <Alert className="w-100 position-absolute top-0" color="danger">{error}</Alert> : null}
             <div>
-                <p>{loading ? "loading..." : ""}</p>
-                <p>{error ? error : ""}</p>
-                <p>{user.username}</p>
+                <FormGroup>
+                    <Label>Username</Label>
+                    <Input
+                        value={username}
+                        onChange={handlerUsernameInput}
+                    />
+                </FormGroup>
+
+                <FormGroup>
+                    <Label>Password</Label>
+                    <Input
+                        type={"password"}
+                        value={password}
+                        onChange={handlerPasswordInput}
+                    />
+                </FormGroup>
+
+                <Button
+                    color="success"
+                    block
+                    onClick={handlerLoginButton}
+                >
+                    {loading ? "Signing in..." : "Sign in"}
+                </Button>
+                <div className="mt-2">
+                    <i>New to LK? <Link to={"/registration"}>Create an account</Link></i>
+                </div>
+
             </div>
         </div>
     )
