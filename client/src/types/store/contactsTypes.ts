@@ -6,6 +6,10 @@ export interface ContactsState {
     error: null | string;
 }
 
+export interface SelectedContactState {
+    contact: ContactsResponse
+}
+
 
 export enum ContactsActionTypes {
     FETCH_CONTACTS = "FETCH_CONTACTS",
@@ -13,7 +17,8 @@ export enum ContactsActionTypes {
     FETCH_CONTACTS_ERROR = "FETCH_CONTACTS_ERROR",
     ADD_CONTACT = "ADD_CONTACT",
     REMOVE_CONTACT = "REMOVE_CONTACT",
-    UPDATE_CONTACT = "UPDATE_CONTACT"
+    UPDATE_CONTACT = "UPDATE_CONTACT",
+    SET_SELECTED_CONTACT = "SET_SELECTED_CONTACT"
 }
 
 interface FetchContactsAction {
@@ -45,6 +50,11 @@ interface FetchContactsErrorAction {
     value: string;
 }
 
+interface SetSelectedContactAction {
+    type: ContactsActionTypes.SET_SELECTED_CONTACT;
+    value: ContactsResponse;
+}
+
 
 export type  ContactsAction =
     FetchContactsAction |
@@ -52,4 +62,5 @@ export type  ContactsAction =
     FetchContactsErrorAction |
     AddContactsAction |
     RemoveContactsAction |
-    UpdateContactsAction
+    UpdateContactsAction |
+    SetSelectedContactAction
