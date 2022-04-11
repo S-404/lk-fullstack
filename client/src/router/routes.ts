@@ -1,4 +1,4 @@
-import LoginPage from "../pages/loginPage/LoginPage";
+import LoginPage from "../pages/LoginPage";
 import UserPage from "../pages/UserPage"
 import {RoutesTypes} from "../types/router/routesTypes"
 import ContactsPage from "../pages/ContactsPage"

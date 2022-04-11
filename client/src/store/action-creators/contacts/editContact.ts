@@ -4,7 +4,7 @@ import ContactsService from "../../../services/contactsService"
 import axios from "axios"
 import {EditContactParams} from "../../../types/services/contactsParameters"
 
-export const editContact = ({data, id}:EditContactParams) => {
+export const editContact = ({data, id}: EditContactParams) => {
     return async (dispatch: Dispatch<ContactsAction>) => {
         try {
             dispatch({type: ContactsActionTypes.FETCH_CONTACTS})

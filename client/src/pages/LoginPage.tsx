@@ -1,6 +1,6 @@
 import React, {FC, useState} from "react"
-import {useTypedSelector} from "../../hooks/useTypedSelector"
-import {useActions} from "../../hooks/useActions"
+import {useTypedSelector} from "../hooks/useTypedSelector"
+import {useActions} from "../hooks/useActions"
 
 const LoginPage: FC = () => {
 
