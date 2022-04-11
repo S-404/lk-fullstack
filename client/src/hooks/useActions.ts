@@ -8,6 +8,8 @@ import {fetchContacts} from "../store/action-creators/contacts/fetchContacts"
 import {addContact} from "../store/action-creators/contacts/addContact"
 import {editContact} from "../store/action-creators/contacts/editContact"
 import {removeContact} from "../store/action-creators/contacts/removeContact"
+import {setModalEditContact} from "../store/action-creators/modals/setModalEditContact"
+import {setModalNewContact} from "../store/action-creators/modals/setModalNewContact"
 
 export const useActions = () => {
     const dispatch = useDispatch()
@@ -19,7 +21,9 @@ export const useActions = () => {
             fetchContacts,
             addContact,
             editContact,
-            removeContact
+            removeContact,
+            setModalEditContact,
+            setModalNewContact
         },
         dispatch)
 }
