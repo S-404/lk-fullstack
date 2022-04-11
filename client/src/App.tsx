@@ -5,6 +5,7 @@ import {useActions} from "./hooks/useActions"
 import {useTypedSelector} from "./hooks/useTypedSelector"
 import "bootstrap/dist/css/bootstrap.min.css"
 import MyNavBar from "./components/UI/MyNavbar"
+import "../src/styles/App.css"
 
 const App: FC = () => {
 
