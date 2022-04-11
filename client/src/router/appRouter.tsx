@@ -1,7 +1,7 @@
 import React, {FC} from "react"
 import {Route, Routes} from "react-router-dom"
 import {privateRoutes, publicRoutes} from "./routes"
-import LoginPage from "../pages/loginPage/LoginPage"
+import LoginPage from "../pages/LoginPage"
 import {useTypedSelector} from "../hooks/useTypedSelector"
 import UserPage from "../pages/UserPage"
 

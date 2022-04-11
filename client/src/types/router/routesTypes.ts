@@ -2,5 +2,6 @@ import {FC} from "react"
 
 export interface RoutesTypes {
     path: string,
-    component: FC
+    component: FC,
+    shortName: string
 }

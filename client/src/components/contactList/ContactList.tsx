@@ -1,23 +1,36 @@
-import React, {FC, useEffect} from "react"
-import Contacts from "./Contacts"
+import React, {FC, useState} from "react"
+import Contact from "./Contact"
+import {Table} from "reactstrap"
 import {useTypedSelector} from "../../hooks/useTypedSelector"
-import {useActions} from "../../hooks/useActions"
+import {useFilteredContactList} from "../../hooks/useContacts"
 
 const ContactList: FC = () => {
 
-    const {user} = useTypedSelector(state => state.auth)
-    const {contacts, loading, error} = useTypedSelector(state => state.contacts)
-    const {fetchContacts} = useActions()
+    const [heads] = useState<string[]>(["#", "Name", "Phone", "Email", "", ""])
+    const {contacts} = useTypedSelector(state => state.contacts)
+    const {filter} = useTypedSelector(state => state.filterContacts)
 
-    useEffect(() => {
-        fetchContacts(user.id)
-    }, [])
+    const contactList = useFilteredContactList(contacts,filter)
 
     return (
-        <div>
-            <h3>Contact List:</h3>
-            <Contacts contacts={contacts}/>
+
+        <div className="position-relative h-75 overflow-auto">
+            <Table hover>
+                <thead className="position-sticky top-0 bg-body">
+                <tr>
+                    {heads.map((head, index) => (
+                        <th key={index}>{head}</th>
+                    ))}
+                </tr>
+                </thead>
+                <tbody>
+                {contactList.map((contact, index) => (
+                    <Contact key={contact.id} contact={contact} index={index}/>
+                ))}
+                </tbody>
+            </Table>
         </div>
+
     )
 }
 
