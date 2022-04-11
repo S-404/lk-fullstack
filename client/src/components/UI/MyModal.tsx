@@ -1,6 +1,6 @@
 import React, {FC} from "react"
 import {Modal, ModalBody, ModalHeader} from "reactstrap"
-import {MyModalTypes} from "../../types/components/MyModalTypes"
+import {MyModalTypes} from "../../types/components/myModalTypes"
 
 
 const MyModal: FC<MyModalTypes> = (

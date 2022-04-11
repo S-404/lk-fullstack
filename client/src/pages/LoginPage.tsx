@@ -28,7 +28,7 @@ const LoginPage: FC = () => {
         <div className="w-25 h-50 align-items-center m-auto mt-5">
 
             <h2>Sign in to LK</h2>
-            {error ? <Alert className="w-100 position-absolute top-0" color="danger">{error}</Alert> : null}
+
             <div>
                 <FormGroup>
                     <Label>Username</Label>
@@ -46,7 +46,7 @@ const LoginPage: FC = () => {
                         onChange={handlerPasswordInput}
                     />
                 </FormGroup>
-
+                {error ? <Alert className="" color="danger">{error}</Alert> : null}
                 <Button
                     color="success"
                     block

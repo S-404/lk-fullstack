@@ -14,7 +14,7 @@ const ContactList: FC = () => {
 
     return (
 
-        <div className="position-relative h-50 overflow-auto">
+        <div className="position-relative h-75 overflow-auto">
             <Table hover>
                 <thead className="position-sticky top-0 bg-body">
                 <tr>

@@ -6,6 +6,7 @@ import {Link} from "react-router-dom"
 import {privateRoutes} from "../../router/routes"
 
 const MyNavBar: FC = () => {
+
     const {logout} = useActions()
     const auth = useTypedSelector(state => state.auth)
 

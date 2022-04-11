@@ -1,8 +1,8 @@
 import React, {FC, useEffect, useState} from "react"
-import {isValidEmail, isValidNameInput, isValidPhoneInput} from "../../helpers/validate"
 import {FormFeedback, FormGroup, Input} from "reactstrap"
-import {FormChecksTypes, NewContactFormInputsPropsTypes} from "../../types/components/ContactFormTypes"
-
+import {FormChecksTypes, NewContactFormInputsPropsTypes} from "../../types/components/contactFormTypes"
+import {formCheckStateInitial} from "../../helpers/initialStates"
+import {emailCheck, phoneCheck, usernameCheck} from "../../helpers/contactsChecks"
 
 const ContactFormInputs: FC<NewContactFormInputsPropsTypes> = (
     {
@@ -12,44 +12,25 @@ const ContactFormInputs: FC<NewContactFormInputsPropsTypes> = (
         setEmail,
         setUsername,
         setPhone,
-        setInputsIsValid
     }
 ) => {
-    const [formChecks, setFormChecks] = useState<FormChecksTypes>({
-        emailInputValid: false,
-        emailInputInvalid: false,
-        usernameInputValid: false,
-        usernameInputInvalid: false,
-        phoneInputValid: false,
-        phoneInputInvalid: false
-    })
+    const [formChecks, setFormChecks] = useState<FormChecksTypes>(formCheckStateInitial())
 
     useEffect(() => {
-        const isValidName = formChecks.usernameInputValid
-        const isValidEmail = formChecks.emailInputValid || email.length === 0
-        const isValidPhone = formChecks.phoneInputValid || phone.length === 0
-        const isValid = isValidName && isValidEmail && isValidPhone
-        setInputsIsValid(isValid)
-    }, [formChecks])
-
-    useEffect(() => {
-        const isValid = isValidNameInput(username) && username.length > 0
-        const isInvalid = !isValid && username.length > 0
-        setFormChecks({...formChecks, usernameInputInvalid: isInvalid, usernameInputValid: isValid})
-    }, [username])
-
-    useEffect(() => {
-        const isValid = isValidEmail(email)
-        const isInvalid = !isValid && email.length > 0
-        setFormChecks({...formChecks, emailInputInvalid: isInvalid, emailInputValid: isValid})
-    }, [email])
-
-
-    useEffect(() => {
-        const isValid = isValidPhoneInput(phone)
-        const isInvalid = !isValid && phone.length > 0
-        setFormChecks({...formChecks, phoneInputInvalid: isInvalid, phoneInputValid: isValid})
-    }, [phone])
+        const {isValid: usernameIsValid, isInvalid: usernameIsInvalid} = usernameCheck(username)
+        const {isValid: phoneIsValid, isInvalid: phoneIsInvalid} = phoneCheck(phone)
+        const {isValid: emailIsValid, isInvalid: emailIsInvalid} = emailCheck(email)
+        setFormChecks(
+            {
+                ...formChecks,
+                usernameInputInvalid: usernameIsInvalid,
+                usernameInputValid: usernameIsValid,
+                phoneInputInvalid: phoneIsInvalid,
+                phoneInputValid: phoneIsValid,
+                emailInputInvalid: emailIsInvalid,
+                emailInputValid: emailIsValid,
+            })
+    }, [username, email, phone])
 
     const emailOnInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value)
@@ -73,7 +54,10 @@ const ContactFormInputs: FC<NewContactFormInputsPropsTypes> = (
                     valid={formChecks.usernameInputValid}
                 />
                 <FormFeedback>
-                    Invalid Characters. Use Letters and Spaces.
+                    <span>Use letters and spaces.</span>
+                    <br/>
+                    <span>Should contain at least 1 character</span>
+
                 </FormFeedback>
             </FormGroup>
 
@@ -86,7 +70,17 @@ const ContactFormInputs: FC<NewContactFormInputsPropsTypes> = (
                     valid={formChecks.phoneInputValid}
                 />
                 <FormFeedback>
-                    Invalid Format
+                    <span>Invalid phone format. </span>
+                    <br/>
+                    <span>Use examples:</span>
+                    <br/>
+                    <span>
+                        0(123)123-45-67
+                    </span>
+                    <br/>
+                    <span>
+                        1234567890
+                    </span>
                 </FormFeedback>
             </FormGroup>
 

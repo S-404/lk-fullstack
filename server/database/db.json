@@ -1,26 +1,46 @@
 {
   "users": [
+    {
+      "username": "user",
+      "password": "$2b$04$fPYa21myY4FaLqmvaVySgeMWgJIws55MQ65.mPlE5DymC.2zMqX5S",
+      "id": 1
+    }
   ],
   "tokens": [
+    {
+      "userId": 1,
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcklkIjoxLCJ1c2VybmFtZSI6InVzZXIiLCJpYXQiOjE2NDk3MTUzNjcsImV4cCI6MTY0OTgwMTc2N30.StCZrCacYPXOPolMo0SzYvoPOkvwSBdwlCOSsr1iRZE",
+      "id": 1
+    }
   ],
   "contacts": [
     {
-      "id": 1,
       "userId": 1,
-      "contact_list": [
-        {
-          "id": 1,
-          "username": "user2",
-          "email": "user2@mail.com",
-          "phone": "+123456789"
-        },
-        {
-          "id": 2,
-          "username": "user3",
-          "email": "user3@mail.com",
-          "phone": "+123456789"
-        }
-      ]
+      "username": "username1",
+      "email": "mail@mail.com",
+      "phone": "1234567890",
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "username": "Андрей с",
+      "email": "sudarev.andrey.i@gmail.com",
+      "phone": "",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "username": "работа",
+      "email": "",
+      "phone": "+7(123)123-45-67",
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "username": "еще один контакт",
+      "email": "contact@contact.com",
+      "phone": "9900990099",
+      "id": 4
     }
   ]
 }
