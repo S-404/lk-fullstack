@@ -25,7 +25,7 @@ const LoginPage: FC = () => {
     }
 
     return (
-        <div className="w-25 h-50 align-items-center m-auto mt-5">
+        <div className="container col-md-3 mt-5">
 
             <h2>Sign in to LK</h2>
 
