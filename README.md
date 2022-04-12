@@ -6,12 +6,12 @@ frontend: react js, typescript, redux, bootstrap
 
 
 ### `npm install` then `npm start`
-from `server` folder and `client` folder
+from `server` directory and `client` directory
 
 or
 
 ### `npm install`
-from root folder \
+in the project directory \
 ("concurrently" will be installed) \
 then use
 ### `npm run install-all`
