@@ -14,7 +14,7 @@ const MyNavBar: FC = () => {
         <div>
             <Navbar
                 color="light"
-                expand="md"
+                expand
                 light
             >
                 <NavbarBrand>

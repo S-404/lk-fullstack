@@ -6,10 +6,12 @@ import {useActions} from "../../hooks/useActions"
 
 const Contact: FC<ContactTypes> = ({contact, index}) => {
 
-    const {removeContact, setModalEditContact, setSelectedContact} = useActions()
+    const { setModalEditContact, setSelectedContact, setConfirmDeleteModal} = useActions()
 
     const removeButtonHandler = () => {
-        removeContact(contact.id)
+        setSelectedContact(contact)
+        setConfirmDeleteModal(true)
+
     }
     const editButtonHandler = () => {
         setSelectedContact(contact)
@@ -17,31 +19,46 @@ const Contact: FC<ContactTypes> = ({contact, index}) => {
     }
 
     return (
-        <tr>
-            <th scope="row">{index + 1}</th>
-            <td>{contact.username}</td>
-            <td>{contact.phone}</td>
-            <td>{contact.email}</td>
-            <td>
-                <Button
-                    color="danger"
-                    outline
-                    onClick={removeButtonHandler}
-                >
-                    remove
-                </Button>
-            </td>
-            <td>
-                <Button
-                    color="secondary"
-                    outline
-                    onClick={editButtonHandler}
-                >
-                    edit
-                </Button>
-            </td>
 
-        </tr>
+        <div className=" bg-light m-2 p-2">
+            <div className="container p-t-10 position-relative">
+                <div>
+                    <h4> {contact.username}</h4>
+                    <ul className="list-inline p-b-10">
+                        <li>
+                            <div><b>Phone:</b> {contact.phone}</div>
+                        </li>
+                        <li>
+                            <div><b>Email:</b> {contact.email}</div>
+                        </li>
+                    </ul>
+
+                    <div className="d-flex justify-content-end">
+                        <div>
+                            <Button
+                                size="sm"
+                                outline
+                                color="secondary"
+                                onClick={editButtonHandler}
+                            >
+                                edit
+                            </Button>
+                            {" "}
+                            <Button
+                                color="danger"
+                                outline
+                                size="sm"
+                                onClick={removeButtonHandler}
+                            >
+                                remove
+                            </Button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     )
 }
 

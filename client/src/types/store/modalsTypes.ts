@@ -3,9 +3,14 @@ export interface ModalsState {
     addContactModal: boolean;
 }
 
+export interface ConfirmDeleteModalsState {
+    confirmDeleteModal: boolean;
+}
+
 export enum ModalsActionTypes {
     SET_EDIT_CONTACT_MODAL_VISIBILITY = "SET_EDIT_CONTACT_MODAL_VISIBILITY",
     SET_ADD_CONTACT_MODAL_VISIBILITY = "SET_ADD_CONTACT_MODAL_VISIBILITY",
+    SET_ALERT_MODAL_VISIBILITY = "SET_ALERT_MODAL_VISIBILITY",
 }
 
 interface SetEditContactAction {
@@ -18,5 +23,9 @@ interface SetAddContactAction {
     value: boolean;
 }
 
+interface SetAlertAction {
+    type: ModalsActionTypes.SET_ALERT_MODAL_VISIBILITY;
+    value: boolean
+}
 
-export type  ModalsAction = SetEditContactAction | SetAddContactAction
+export type  ModalsAction = SetEditContactAction | SetAddContactAction | SetAlertAction

@@ -13,7 +13,7 @@ const FilterInput: FC = () => {
     }
 
     return (
-        <div className="m-2">
+        <div className="w-50">
             <Input
                 placeholder="Search..."
                 value={filter}
