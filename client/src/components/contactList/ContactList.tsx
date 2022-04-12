@@ -10,6 +10,8 @@ const ContactList: FC = () => {
 
     const contactList = useFilteredContactList(contacts, filter)
 
+    if(!contactList.length)return (<i>List is Empty</i>)
+
     return (
 
         <div className="contact-list">

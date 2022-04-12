@@ -6,6 +6,7 @@ import ContactForm from "../components/contactForm/ContactForm"
 import {useTypedSelector} from "../hooks/useTypedSelector"
 import {useActions} from "../hooks/useActions"
 import FilterInput from "../components/contactList/FilterInput"
+import MyAlert from "../components/UI/MyAlert"
 
 const ContactsPage: FC = () => {
 
@@ -41,10 +42,7 @@ const ContactsPage: FC = () => {
                     <FilterInput/>
                 </div>
 
-
                     <ContactList/>
-
-
 
                 <MyModal
                     visible={addContactModal}
@@ -61,6 +59,8 @@ const ContactsPage: FC = () => {
                 >
                     <ContactForm mode="edit"/>
                 </MyModal>
+
+                <MyAlert/>
 
             </div>
         </div>

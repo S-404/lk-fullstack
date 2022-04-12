@@ -6,10 +6,12 @@ import {useActions} from "../../hooks/useActions"
 
 const Contact: FC<ContactTypes> = ({contact, index}) => {
 
-    const {removeContact, setModalEditContact, setSelectedContact} = useActions()
+    const { setModalEditContact, setSelectedContact, setConfirmDeleteModal} = useActions()
 
     const removeButtonHandler = () => {
-        removeContact(contact.id)
+        setSelectedContact(contact)
+        setConfirmDeleteModal(true)
+
     }
     const editButtonHandler = () => {
         setSelectedContact(contact)
@@ -31,8 +33,8 @@ const Contact: FC<ContactTypes> = ({contact, index}) => {
                         </li>
                     </ul>
 
-                    <div className="d-flex justify-content-end position-absolute bottom-0 end-0">
-                        <div className="m-2 mb-0">
+                    <div className="d-flex justify-content-end">
+                        <div>
                             <Button
                                 size="sm"
                                 outline
