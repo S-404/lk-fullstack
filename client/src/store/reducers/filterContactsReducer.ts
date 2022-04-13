@@ -1,13 +1,17 @@
-import {ContactsAction, ContactsActionTypes, FilterContactsState} from "../../types/store/contactsTypes"
+import {
+    FilterContactsAction,
+    FilterContactsActionTypes,
+    FilterContactsState
+} from "../../types/store/filterContactsTypes"
 
 
 const filterContacts: FilterContactsState = {
-    filter: '',
+    filter: "",
 }
 
-export const filterContactsReducer = (state = filterContacts, action: ContactsAction): FilterContactsState => {
+export const filterContactsReducer = (state = filterContacts, action: FilterContactsAction): FilterContactsState => {
     switch (action.type) {
-        case ContactsActionTypes.SET_FILTER_CONTACTS:
+        case FilterContactsActionTypes.SET_FILTER_CONTACTS:
             return {filter: action.value}
         default:
             return state
