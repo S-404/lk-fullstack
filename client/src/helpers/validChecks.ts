@@ -6,7 +6,7 @@ export const isValidEmail = (email: string) => {
         )
 }
 
-export const isValidNameInput = (text: string) => {
+export const isValidStringInput = (text: string) => {
     return !!text.match(
         /^[а-яА-Яa-zA-Z\s]+/
     )

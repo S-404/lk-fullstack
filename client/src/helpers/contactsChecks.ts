@@ -1,9 +1,15 @@
-import {isValidEmail, isValidNameInput, isValidPhoneInput} from "./validChecks"
+import {isValidEmail, isValidStringInput, isValidPhoneInput} from "./validChecks"
 
 export const usernameCheck = (username: string) => {
     return {
-        isValid: isValidNameInput(username) && username.length > 0,
-        isInvalid: !isValidNameInput(username)
+        isValid: isValidStringInput(username) && username.length > 0,
+        isInvalid: !isValidStringInput(username)
+    }
+}
+export const jobCheck = (job: string) => {
+    return {
+        isValid: isValidStringInput(job) || job.length === 0,
+        isInvalid: !isValidStringInput(job) && job.length > 0
     }
 }
 

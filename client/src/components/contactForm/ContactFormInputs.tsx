@@ -2,22 +2,25 @@ import React, {FC, useEffect, useState} from "react"
 import {FormFeedback, FormGroup, Input} from "reactstrap"
 import {FormChecksTypes, NewContactFormInputsPropsTypes} from "../../types/components/contactFormTypes"
 import {formCheckStateInitial} from "../../helpers/initialStates"
-import {emailCheck, phoneCheck, usernameCheck} from "../../helpers/contactsChecks"
+import {emailCheck, jobCheck, phoneCheck, usernameCheck} from "../../helpers/contactsChecks"
 
 const ContactFormInputs: FC<NewContactFormInputsPropsTypes> = (
     {
         username,
         email,
         phone,
+        job,
         setEmail,
         setUsername,
         setPhone,
+        setJob
     }
 ) => {
     const [formChecks, setFormChecks] = useState<FormChecksTypes>(formCheckStateInitial())
 
     useEffect(() => {
         const {isValid: usernameIsValid, isInvalid: usernameIsInvalid} = usernameCheck(username)
+        const {isValid: jobIsValid, isInvalid: jobIsInvalid} = jobCheck(job)
         const {isValid: phoneIsValid, isInvalid: phoneIsInvalid} = phoneCheck(phone)
         const {isValid: emailIsValid, isInvalid: emailIsInvalid} = emailCheck(email)
         setFormChecks(
@@ -29,6 +32,8 @@ const ContactFormInputs: FC<NewContactFormInputsPropsTypes> = (
                 phoneInputValid: phoneIsValid,
                 emailInputInvalid: emailIsInvalid,
                 emailInputValid: emailIsValid,
+                jobInputInvalid: jobIsInvalid,
+                jobInputValid: jobIsValid,
             })
     }, [username, email, phone])
 
@@ -40,6 +45,9 @@ const ContactFormInputs: FC<NewContactFormInputsPropsTypes> = (
     }
     const phoneOnInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPhone(e.target.value)
+    }
+    const jobOnInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setJob(e.target.value)
     }
 
 
@@ -57,7 +65,19 @@ const ContactFormInputs: FC<NewContactFormInputsPropsTypes> = (
                     <span>Use letters and spaces.</span>
                     <br/>
                     <span>Should contain at least 1 character</span>
+                </FormFeedback>
+            </FormGroup>
 
+            <FormGroup>
+                <Input
+                    placeholder="job"
+                    value={job}
+                    onChange={jobOnInputHandler}
+                    invalid={formChecks.jobInputInvalid}
+                    valid={formChecks.jobInputValid}
+                />
+                <FormFeedback>
+                    <span>Use letters and spaces.</span>
                 </FormFeedback>
             </FormGroup>
 

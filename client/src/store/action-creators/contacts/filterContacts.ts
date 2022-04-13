@@ -1,8 +1,8 @@
 import {Dispatch} from "redux"
-import {ContactsAction, ContactsActionTypes} from "../../../types/store/contactsTypes"
+import {FilterContactsAction, FilterContactsActionTypes} from "../../../types/store/filterContactsTypes"
 
 export const setFilterContacts = (value: string) => {
-    return (dispatch: Dispatch<ContactsAction>) => {
-        dispatch({type: ContactsActionTypes.SET_FILTER_CONTACTS, value})
+    return (dispatch: Dispatch<FilterContactsAction>) => {
+        dispatch({type: FilterContactsActionTypes.SET_FILTER_CONTACTS, value})
     }
 }

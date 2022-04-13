@@ -13,6 +13,7 @@ import {setModalNewContact} from "../store/action-creators/modals/setModalNewCon
 import {setSelectedContact} from "../store/action-creators/contacts/setSelectedContact"
 import {setFilterContacts} from "../store/action-creators/contacts/filterContacts"
 import {setConfirmDeleteModal} from "../store/action-creators/modals/setConfirmDeleteModal"
+import {setSortContacts} from "../store/action-creators/contacts/sortContacts"
 
 export const useActions = () => {
     const dispatch = useDispatch()
@@ -29,7 +30,8 @@ export const useActions = () => {
             setModalNewContact,
             setSelectedContact,
             setFilterContacts,
-            setConfirmDeleteModal
+            setConfirmDeleteModal,
+            setSortContacts,
         },
         dispatch)
 }

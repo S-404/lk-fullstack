@@ -12,6 +12,10 @@
     background: #cdcdcd;
 }
 
+:root{
+    --contact-card-color: rgba(104, 104, 117, 0.51);
+}
+
 
 #root {
     height: 100vh;
@@ -19,7 +23,7 @@
 }
 
 body{
-    background-color: #f5f5f5;
+    background-color: #fcfcfc;
 }
 
 .nav-link:hover {
@@ -30,7 +34,10 @@ body{
     background-color: #4b4b4b;
 }
 
-.form-control:focus {
+.form-control:focus,.form-select:focus {
     border-color: #989898;
     box-shadow: 0 0 0 0.2rem rgba(87, 87, 87, 0.25);
+}
+.contact-card, .contact-card.contact-card__buttons{
+    background-color: var(--contact-card-color);
 }

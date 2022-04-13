@@ -5,7 +5,9 @@ export const formCheckStateInitial = () => {
         usernameInputValid: false,
         usernameInputInvalid: false,
         phoneInputValid: false,
-        phoneInputInvalid: false
+        phoneInputInvalid: false,
+        jobInputValid: false,
+        jobInputInvalid: false
     }
 }
 
