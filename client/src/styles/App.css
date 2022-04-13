@@ -1,4 +1,4 @@
-*{
+* {
     scrollbar-width: thin; /*mozilla scrollbar*/
 }
 
@@ -18,4 +18,19 @@
     overflow: hidden;
 }
 
+body{
+    background-color: #f5f5f5;
+}
 
+.nav-link:hover {
+    background-color: #343434;
+}
+
+.nav-link:focus {
+    background-color: #4b4b4b;
+}
+
+.form-control:focus {
+    border-color: #989898;
+    box-shadow: 0 0 0 0.2rem rgba(87, 87, 87, 0.25);
+}
