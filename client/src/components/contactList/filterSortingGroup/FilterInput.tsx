@@ -1,7 +1,7 @@
 import React, {FC} from "react"
 import {Input} from "reactstrap"
-import {useActions} from "../../hooks/useActions"
-import {useTypedSelector} from "../../hooks/useTypedSelector"
+import {useActions} from "../../../hooks/useActions"
+import {useTypedSelector} from "../../../hooks/useTypedSelector"
 
 const FilterInput: FC = () => {
 
@@ -13,14 +13,11 @@ const FilterInput: FC = () => {
     }
 
     return (
-        <div className="w-50">
             <Input
                 placeholder="Search..."
                 value={filter}
                 onChange={onChangeInputHandler}
             />
-        </div>
-
     )
 }
 

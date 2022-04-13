@@ -6,7 +6,7 @@ import {useActions} from "../../hooks/useActions"
 
 const Contact: FC<ContactTypes> = ({contact, index}) => {
 
-    const { setModalEditContact, setSelectedContact, setConfirmDeleteModal} = useActions()
+    const {setModalEditContact, setSelectedContact, setConfirmDeleteModal} = useActions()
 
     const removeButtonHandler = () => {
         setSelectedContact(contact)
@@ -20,11 +20,11 @@ const Contact: FC<ContactTypes> = ({contact, index}) => {
 
     return (
 
-        <div className="bg-dark text-light border rounded m-2 p-2">
+        <div className="contact-card rounded m-2 p-2">
             <div className="container p-t-10 position-relative">
                 <h4> {contact.username}</h4>
                 <div><i>{contact.job || "-"}</i></div>
-                <ul className="list-inline  p-2 p-b-10 bg-light rounded">
+                <ul className="list-inline p-2 p-b-10 bg-light rounded">
                     <li>
                         <div><b>Phone:</b> {contact.phone}</div>
                     </li>
@@ -33,27 +33,25 @@ const Contact: FC<ContactTypes> = ({contact, index}) => {
                     </li>
                 </ul>
 
-                    <div className="d-flex justify-content-end">
-                        <div>
-                            <Button
-                                size="sm"
-                                outline
-                                color="secondary"
-                                onClick={editButtonHandler}
-                            >
-                                edit
-                            </Button>
-                            {" "}
-                            <Button
-                                color="danger"
-                                outline
-                                size="sm"
-                                onClick={removeButtonHandler}
-                            >
-                                remove
-                            </Button>
-                        </div>
-
+                <div className="contact-card__buttons position-absolute top-0 end-0 d-flex justify-content-end">
+                    <div>
+                        <Button
+                            size="sm"
+                            outline
+                            color="secondary"
+                            onClick={editButtonHandler}
+                        >
+                            edit
+                        </Button>
+                        {" "}
+                        <Button
+                            color="danger"
+                            outline
+                            size="sm"
+                            onClick={removeButtonHandler}
+                        >
+                            remove
+                        </Button>
                     </div>
                 </div>
             </div>
