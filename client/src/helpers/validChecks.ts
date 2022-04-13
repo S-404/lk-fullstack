@@ -14,7 +14,7 @@ export const isValidStringInput = (text: string) => {
 
 export const isValidPhoneInput = (text: string) => {
     return !!text.match(
-        /^[+]*[(]?[0-9\s]{1,3}[)]?[(]?[0-9]{1,3}[)]?[-\s./0-9]*$/g
+       /^[+\-]?[0-9]{0,3}?[-\s.]?[(]?[0-9]{1,3}[)]?[-\s.]?[-\s./0-9]*(x|ext\.?)?[-\s./0-9]{0,10}$/
     )
 }
 
