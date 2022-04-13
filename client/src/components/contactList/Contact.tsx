@@ -22,16 +22,16 @@ const Contact: FC<ContactTypes> = ({contact, index}) => {
 
         <div className="bg-dark text-light border rounded m-2 p-2">
             <div className="container p-t-10 position-relative">
-                <div>
-                    <h4> {contact.username}</h4>
-                    <ul className="list-inline p-b-10">
-                        <li>
-                            <div><b>Phone:</b> {contact.phone}</div>
-                        </li>
-                        <li>
-                            <div><b>Email:</b> {contact.email}</div>
-                        </li>
-                    </ul>
+                <h4> {contact.username}</h4>
+                <div><i>{contact.job || "-"}</i></div>
+                <ul className="list-inline  p-2 p-b-10 bg-light rounded">
+                    <li>
+                        <div><b>Phone:</b> {contact.phone}</div>
+                    </li>
+                    <li>
+                        <div><b>Email:</b> {contact.email}</div>
+                    </li>
+                </ul>
 
                     <div className="d-flex justify-content-end">
                         <div>

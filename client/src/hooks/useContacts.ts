@@ -11,9 +11,10 @@ export const useFilteredContactList = (contacts: ContactsResponse[], filterValue
                 return text1.toLowerCase().includes(text2.toLowerCase())
             }
             return contacts.filter((contact) =>
-                compare(contact.username, filterValue)||
+                compare(contact.username, filterValue) ||
                 compare(contact.phone, filterValue) ||
-                compare(contact.email, filterValue)
+                compare(contact.email, filterValue) ||
+                compare(contact.job, filterValue)
             )
         }
         return contacts

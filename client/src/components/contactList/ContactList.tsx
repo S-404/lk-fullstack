@@ -30,19 +30,19 @@ const ContactList: FC = () => {
     if (!contactList.length) return (<i>List is Empty</i>)
 
     return (
-            <AutoSizer>
-                {({height, width}) => (
-                    <FixedSizeList
-                        className="List"
-                        height={height}
-                        itemCount={contactList.length}
-                        itemSize={150}
-                        width={width}
-                    >
-                        {Row}
-                    </FixedSizeList>
-                )}
-            </AutoSizer>
+        <AutoSizer>
+            {({height, width}) => (
+                <FixedSizeList
+                    className="List"
+                    height={height}
+                    itemCount={contactList.length}
+                    itemSize={170}
+                    width={width}
+                >
+                    {Row}
+                </FixedSizeList>
+            )}
+        </AutoSizer>
     )
 }
 

@@ -4,13 +4,14 @@ import ContactFormInputs from "./ContactFormInputs"
 import {useActions} from "../../hooks/useActions"
 import {useTypedSelector} from "../../hooks/useTypedSelector"
 import {ContactFormTypes} from "../../types/components/contactFormTypes"
-import {emailCheck, phoneCheck, usernameCheck} from "../../helpers/contactsChecks"
+import {emailCheck, jobCheck, phoneCheck, usernameCheck} from "../../helpers/contactsChecks"
 
 const ContactForm: FC<ContactFormTypes> = ({mode}) => {
 
     const [email, setEmail] = useState<string>("")
     const [username, setUsername] = useState<string>("")
     const [phone, setPhone] = useState<string>("")
+    const [job, setJob] = useState<string>("")
 
     const {addContact, editContact, setModalNewContact, setModalEditContact} = useActions()
     const {user} = useTypedSelector(state => state.auth)
@@ -21,6 +22,7 @@ const ContactForm: FC<ContactFormTypes> = ({mode}) => {
             setUsername(selectedContact.username)
             setEmail(selectedContact.email)
             setPhone(selectedContact.phone)
+            setJob(selectedContact.job)
         }
 
     }, [selectedContact])
@@ -32,14 +34,16 @@ const ContactForm: FC<ContactFormTypes> = ({mode}) => {
             username,
             email,
             phone,
+            job
         }
     }
 
     const applyButtonHandler = () => {
         const {isValid: usernameIsValid} = usernameCheck(username)
+        const {isValid: jobIsValid} = jobCheck(job)
         const {isValid: emailIsValid} = emailCheck(email)
         const {isValid: phoneIsValid} = phoneCheck(phone)
-        const inputsIsValid = usernameIsValid && emailIsValid && phoneIsValid
+        const inputsIsValid = usernameIsValid && emailIsValid && phoneIsValid && jobIsValid
         if (inputsIsValid) {
             switch (mode) {
                 case "edit":
@@ -68,9 +72,11 @@ const ContactForm: FC<ContactFormTypes> = ({mode}) => {
                 email={email}
                 username={username}
                 phone={phone}
+                job={job}
                 setPhone={setPhone}
                 setUsername={setUsername}
                 setEmail={setEmail}
+                setJob={setJob}
             />
 
             <div className="d-flex flex-row justify-content-between">
