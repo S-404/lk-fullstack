@@ -20,7 +20,7 @@ const Contact: FC<ContactTypes> = ({contact, index}) => {
 
     return (
 
-        <div className=" bg-light m-2 p-2">
+        <div className="bg-dark text-light border rounded m-2 p-2">
             <div className="container p-t-10 position-relative">
                 <div>
                     <h4> {contact.username}</h4>

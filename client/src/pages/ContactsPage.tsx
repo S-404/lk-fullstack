@@ -20,8 +20,8 @@ const ContactsPage: FC = () => {
     }, [])
 
     return (
-        <div className="container col-md-6">
-            <div>
+        <div className="container col-md-6 h-75">
+
                 {error ? <Alert color="danger">{error}</Alert> : null}
 
                 <div className="d-flex flex-row justify-content-between mt-2">
@@ -42,7 +42,7 @@ const ContactsPage: FC = () => {
                     <FilterInput/>
                 </div>
 
-                    <ContactList/>
+                <ContactList/>
 
                 <MyModal
                     visible={addContactModal}
