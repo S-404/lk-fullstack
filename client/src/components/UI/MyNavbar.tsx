@@ -13,19 +13,23 @@ const MyNavBar: FC = () => {
     return (
         <div>
             <Navbar
-                color="light"
+                color="dark"
                 expand
                 light
             >
-                <NavbarBrand>
+                <NavbarBrand className='text-light'>
                     {auth.user.username?.toUpperCase()}
                 </NavbarBrand>
 
                 <Collapse navbar>
                     <Nav>
                         {privateRoutes.map((route,index)=>(
-                            <NavItem key={index}>
-                                <NavLink tag={Link} to={route.path}>
+                            <NavItem  key={index}>
+                                <NavLink
+                                    className='text-light'
+                                    tag={Link}
+                                    to={route.path}
+                                >
                                     {route.shortName}
                                 </NavLink>
                             </NavItem>

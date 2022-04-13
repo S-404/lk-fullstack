@@ -29,7 +29,7 @@ const ContactsPage: FC = () => {
                     {loading ? <Spinner/> : <></>}
                 </div>
 
-                <div className=' d-flex flex-row justify-content-between align-items-center m-2'>
+                <div className=" d-flex flex-row justify-content-between align-items-center m-2">
 
                     <Button
                         color="success"
@@ -62,7 +62,6 @@ const ContactsPage: FC = () => {
 
                 <MyAlert/>
 
-            </div>
         </div>
     )
 }
