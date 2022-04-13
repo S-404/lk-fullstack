@@ -2,6 +2,13 @@ import React, {FC} from "react"
 import Contact from "./Contact"
 import {useTypedSelector} from "../../hooks/useTypedSelector"
 import {useFilteredContactList} from "../../hooks/useContacts"
+import {FixedSizeList} from "react-window"
+import AutoSizer from "react-virtualized-auto-sizer"
+
+interface Row {
+    index: number;
+    style: {};
+}
 
 const ContactList: FC = () => {
 
@@ -10,19 +17,32 @@ const ContactList: FC = () => {
 
     const contactList = useFilteredContactList(contacts, filter)
 
-    if(!contactList.length)return (<i>List is Empty</i>)
-
-    return (
-
-        <div className="contact-list">
-            <div className="">
-                {contactList.map((contact, index) => (
-                    <Contact key={contact.id} contact={contact} index={index}/>
-                ))}
+    const Row: FC<Row> = ({index, style}) => {
+        const contact = contactList[index]
+        return (
+            <div style={style}>
+                <Contact contact={contact} index={index}/>
             </div>
 
-        </div>
+        )
+    }
 
+    if (!contactList.length) return (<i>List is Empty</i>)
+
+    return (
+            <AutoSizer>
+                {({height, width}) => (
+                    <FixedSizeList
+                        className="List"
+                        height={height}
+                        itemCount={contactList.length}
+                        itemSize={150}
+                        width={width}
+                    >
+                        {Row}
+                    </FixedSizeList>
+                )}
+            </AutoSizer>
     )
 }
 
