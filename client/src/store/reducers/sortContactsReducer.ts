@@ -1,8 +1,13 @@
-import {SortContactsAction, SortContactsActionTypes, SortContactState} from "../../types/store/sortContactsTypes"
+import {
+    SortContactsAction,
+    SortContactsActionTypes,
+    SortContactState,
+    SortingOrderTypes
+} from "../../types/store/sortContactsTypes"
 
 
 const sortContacts: SortContactState = {
-    sort: {criteria: "username", sortingOrder: "asc"}
+    sort: {criteria: "username", sortingOrder: SortingOrderTypes.asc}
 }
 
 export const sortContactsReducer = (state = sortContacts, action: SortContactsAction): SortContactState => {
