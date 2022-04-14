@@ -1,7 +1,11 @@
 import {ContactsResponse} from "../services/contactsResponse"
 
+export enum SortingOrderTypes {
+    asc = "asc",
+    desc = "desc"
+}
 
-type  SortingOrder = "asc" | "desc"
+type  SortingOrder = SortingOrderTypes.asc | SortingOrderTypes.desc
 
 export interface SortingTypes {
     criteria: keyof ContactsResponse;
